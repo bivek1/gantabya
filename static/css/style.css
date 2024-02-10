@@ -1,0 +1,78 @@
+@font-face {
+    font-family: heading;
+    src: url('../fonts/Comfortaa/Comfortaa-VariableFont_wght.ttf');
+}
+
+
+@font-face {
+    font-family: paragraph;
+    src: url('../fonts/Oswald/Oswald-VariableFont_wght.ttf');
+}
+
+
+@font-face {
+    font-family: normals;
+    src: url('../fonts/Saira_Condensed/SairaCondensed-Regular.ttf');
+}
+
+h1, h2, h3{
+    font-family: heading;
+
+}
+h4, h5, h6{
+    font-family: paragraph;
+}
+p, small, .nav-link{
+    font-family: normals;
+}
+
+.frontHead{
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.btn-primary{
+    height: 40px;
+    border: none;
+    color:white;
+    background-color:#022f72;
+}
+
+.navbar-brand img{
+    height: 100px;
+    width: auto;
+}
+
+
+.below-two{
+    background-image: url('../images/twodown.jpeg');
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.twoBox{
+    background-color: white;
+    height: 300px;
+    border-radius: 18px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.two-icon{
+    margin-top: 20px;
+    font-size: 100px;
+    color: #0d2447;
+}
+
+ul{
+    list-style: none;
+}
+li{
+    list-style: none;
+    padding: 10px;
+    font-family: normals;
+    cursor: pointer;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
