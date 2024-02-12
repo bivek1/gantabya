@@ -39,28 +39,94 @@ p, small, .nav-link{
 }
 
 .navbar-brand img{
-    height: 100px;
+    height: 60px;
     width: auto;
 }
 
+  
+  .form-control {
+    border: none;
+   
+    border-radius: 0;
+    padding: 10px;
 
-.below-two{
-    background-image: url('../images/twodown.jpeg');
-    background-size: cover;
-    background-attachment: fixed;
+    background-color: white;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    transition: all 0.3s ease;
+  }
+  .about-box{
+    width: 100%;
+  }
+  .imageBox{
+    background-color: rgb(221, 239, 255);
+  }
+  .about-content{
+    background-color: rgb(207, 233, 255);
+  }
+  .about-content h4{
+    background-color: rgb(121, 191, 252);
+  }
+  
+  .imageBox{
+    position: relative;
+    height: 200px;
+  }
+  .imageBox img{
+    height: 230px;
+    width: auto;
+    position: absolute;
+    position: absolute;
+   
+    top: 60px;
+    transform: translate(-50%, -50%);
+  }
+  .form-control:focus {
+    outline: none;
+    border: none;
+    border-bottom:2px solid rgb(3, 49, 98)bdff; 
+  }
+
+  .form-control:active {
+    outline: none;
+    border: none;
+    border-bottom:2px solid rgb(3, 49, 98)bdff; 
+  }
+  .login-input i{
+    font-size: 30px;
+  }
+  .login-img{
+    align-items: center;
+    height: 100px;
+    width: 100px;
+    border: 2px solod #022445;
+    border-radius: 50%;
+  }
+  .hide-phone img{
+    height: 100%;
+    width: 100%;
+  }
+
+.testoBox img{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+}
+.testoBox{
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .twoBox{
     background-color: white;
     height: 300px;
     border-radius: 18px;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
 }
 
 .two-icon{
     margin-top: 20px;
     font-size: 100px;
-    color: #0d2447;
+    color: #0d2747;
 }
 
 ul{
@@ -75,4 +141,98 @@ li{
 a{
     text-decoration: none;
     color: inherit;
+}
+.teambelow {
+    padding: 20px;
+    position: relative;
+    margin: 0 auto;
+    margin-top: 10px;
+    width: 70%;
+    border-radius: 20px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+   
+}
+.teamSection{
+    height: auto;
+}
+.teamBox{
+    height: 400px;
+}
+
+.maintain-main{
+    height: 60px;
+}
+.maintain{
+    height: 40px;
+}
+
+.teamBox img {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    border: 2px solid blue;
+    position: absolute;
+    top: -60%; 
+    transform: translateX(-50%);
+    z-index: 1; 
+}
+
+/* Login Page Styling */
+.login-div{
+    background-color: #d0e5ff;
+    background-size: 100% 100%;
+    height: 100vh;
+}
+.login-box{
+    width: 70%;
+    background-color: white;
+    border-radius: 10px;
+    padding: 30px;
+    height: auto;
+}
+.login-img img{
+    height: auto;
+    width: 100%;
+}
+.login-input {
+    position: relative;
+  }
+  
+  .icon {
+    position: absolute;
+    top: 50%;
+    margin-left: 5px;
+    left: 0.5rem;
+    transform: translateY(-50%);
+    color: #666; /* Adjust color as needed */
+  }
+  
+  .form-control {
+    padding-left: 2.5rem; /* Adjust padding to accommodate the icon */
+  }
+  
+
+
+.contact-div img{
+    height: auto;
+    width: 100%;
+}
+.contactIconBox{
+    background-color: #022445;
+    border-radius: 50%;
+    height: 240px;
+    width: 240px;
+    color: white;
+}
+
+.courseBox img{
+    height: 200px;
+    width: 100%;
+   
+}
+.courseBox{
+    border: 1px solid grey;
+    border-radius: 5px;
+    overflow: hidden;
 }

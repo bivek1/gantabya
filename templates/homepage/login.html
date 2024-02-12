@@ -1,0 +1,75 @@
+{% extends 'index.html' %}
+
+{% load static %}
+{% block title %}
+    Login Gantabya Ek
+{% endblock title %}
+   
+{% block content %}
+    <div class="container-fuild p-0">
+      
+        <div class="row">
+            <div class="login-div pt-2">
+                <div style="height:100vh" class="pt-1 mt-3">
+                    <div class="login-box m-auto mt-5 p-0 ">
+                       
+                        <div class="row p-0 m-0">
+                            <div class="col-12 col-lg-6 p-0  hide-phone">
+                              <img src="{%static 'images/login.jpg'%}" alt="Gantabya ek">
+                            </div>
+                            <div class="col-12 col-lg-6 my-auto mt-2 p-4 m-0">
+                              
+                                <h1 class="text-center mt-5">WELCOME</h1>
+                              
+                                
+                                <div class="text-center ">
+                                    <!-- <img class="login-img" src="{%static 'images/loginlogo.jpeg'%}" alt="Gantabya EK"> -->
+                                    <form method = "POST" class="mt-5">
+                                        <div class="d-flex mt-4 login-input position-relative">
+                                            <i class="fa fa-user-check my-auto icon"></i>
+                                            <input type="text" name="email_user" class=" form-control" placeholder="Your Email..">
+                                        </div>
+                                        <div class="d-flex mt-4 login-input position-relative">
+                                            <i class="fa fa-passport my-auto icon"></i> 
+                                            <input type="password" name = "password" class="form-control" placeholder="Password..">
+
+                                        </div>
+                                       
+                                        {% csrf_token %}
+                                        <div class="mt-3">
+                                            <button class="btn btn-primary mt-2 w-100">
+                                                Login
+                                            </button>
+                                        </div>
+                                       
+                                        <div class="mt-2 d-">
+                                            <div class="d-flex justify-content-between">
+                                                <small class="text-secondary">
+                                                    Forget password
+                                                </small>
+                                                <small>
+                                                    Sign up
+                                                </small>
+                                            </div>
+                                            
+                                            <small class="mt-3">You can login with</small>
+                                            <hr>
+                                            <i class="fa fa-brands fa-google-plus-g "></i>
+                                            <i class="fa fa-brands fa-facebook-square ps-3"></i>
+                                        </div>
+                                        
+                                    </form>
+                                   
+                                   
+                                </div>
+                            </div>
+                           
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+    
