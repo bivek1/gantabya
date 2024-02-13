@@ -16,7 +16,129 @@
 }
 
 h1, h2, h3{
-    font-family: heading;
+    font-family: sans-serif;
+
+}
+.studentbox{
+  cursor: pointer;
+  position: relative;  
+}
+
+
+.studentbox img{
+  position: relative;
+  height: 350px;
+  width: 100%;
+  /* filter:brightness(80%); */
+
+  
+}
+.stuboxdes {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden; 
+ 
+  transition: height 0.5s ease;
+}
+
+.stuboxdes{
+  position: absolute;
+  bottom: 0; 
+  left: 0; 
+  padding: 10px; 
+  background-color: rgba(255, 255, 255, 0.8); 
+  width: 100%;
+  box-sizing: border-box; 
+
+}
+
+.stuboxdes2{
+  position: absolute;
+  bottom: 0; 
+  left: 0; 
+  padding: 10px; 
+  background-color: rgba(89, 169, 255, 0.8); 
+  width: 100%;
+  box-sizing: border-box; 
+
+}
+
+.stuboxdes3{
+  position: absolute;
+  bottom: 0; 
+  left: 0; 
+  padding: 10px; 
+  background-color: rgba(161, 157, 255, 0.8); 
+  width: 100%;
+  box-sizing: border-box; 
+
+}
+
+.stuboxdes4{
+  position: absolute;
+  bottom: 0; 
+  left: 0; 
+  padding: 10px; 
+  background-color: rgba(250, 157, 255, 0.8); 
+  width: 100%;
+  box-sizing: border-box; 
+
+}
+.studentbox:hover, img{
+  filter:brightness(100%);
+  
+}
+.stuboxdesMain{
+  position: absolute;
+  bottom: 0; 
+  left: 0; 
+  padding: 10px; 
+  background-color: rgba(162, 253, 255, 0.8); 
+  width: 100%;
+  box-sizing: border-box; 
+
+}
+.groupBox {
+  position: relative;
+}
+.groupBox img{
+  filter:brightness(40%);
+  height: 700px;
+  width: 100%;
+  
+}
+.conIcon{
+  font-size: 60px;
+}
+.contactbg{
+  background-image: url('../images/contact.avif');
+  background-size: cover;
+}
+.contactbox{
+  width: 80%;
+  background-color: white;
+}
+
+.groupBox:hover img{
+  filter:brightness(80%);
+
+}
+
+.grpboxdes{
+  position: absolute;
+  left: 0;
+ 
+  transform: translateY(50%);
+  box-sizing: border-box;
+  padding: 10px; 
+  bottom: 50%;
+  width: 100%;
+  box-sizing: border-box; 
 
 }
 h4, h5, h6{
@@ -27,7 +149,8 @@ p, small, .nav-link{
 }
 
 .frontHead{
-    font-size: 50px;
+    font-size: 70px;
+
     font-weight: bold;
 }
 
@@ -235,4 +358,32 @@ a{
     border: 1px solid grey;
     border-radius: 5px;
     overflow: hidden;
+}
+#blogImage{
+  height: 400px;
+ 
+
+  width: 100%;
+}
+
+.blogImage{
+  height: 100px;
+  width: 20%;
+  margin: auto 0;
+  border-radius: 10px;
+}
+.similarBox{
+  border: 1px solid grey;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.grpboxdes h1{
+
+  font-size: 80px;
+  font-weight: bold;
+}
+
+.abtimg img{
+ width:80%
 }

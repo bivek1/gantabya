@@ -11,8 +11,14 @@ def loginView(request):
 def courseView(request):
     return render(request, "homepage/course.html")
 
+def courseDetailView(request):
+    return render(request, "homepage/courseDetails.html")
+
 def contactView(request):
     return render(request, "homepage/contact.html")
 
 def aboutView(request):
     return render(request, "homepage/about.html")
+
+def signupView(request):
+    return render(request, "homepage/signup.html")

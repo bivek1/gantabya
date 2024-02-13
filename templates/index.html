@@ -56,9 +56,6 @@
                     </button>
                 </a>
             </li>
-
-    
-           
         </ul>
         </div>
 
@@ -86,12 +83,15 @@
             <div class="swiper-wrapper">
               <!-- Slides -->
               <div class="swiper-slide">
-                <div class="row m-0 p-4">
-                    <div class="col-12 col-lg-8">
+                <div class="row m-0 p-4 justify-content-center">
+                    <div class="col-12 col-lg-7">
                         <img class="house-img m-auto" src="{%static 'images/help.jpeg'%}" alt="{{ i.name }}">
 
                     </div>
-                    <div class="col-12 col-lg-4 my-auto p-3">
+                    <div class="col-lg-1">
+
+                    </div>
+                    <div class="col-12 col-lg-3 my-auto p-3">
                         <h4 class="frontHead text-danger">
                            NAVIGATING YOU
                         </h4>
@@ -102,8 +102,8 @@
         
               </div>
               <div class="swiper-slide">
-                <div class="row m-0 p-4">
-                    <div class="col-12 col-lg-4 my-auto p-3">
+                <div class="row m-0 p-4 justify-content-center">
+                    <div class="col-12 col-lg-3 my-auto p-3">
                         <h4 class="frontHead text-primary">
                           OUR PLAN
                         </h4>
@@ -112,7 +112,7 @@
                         </H5>
                         <small>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci dolorem dignissimos ut nihil non sed veritatis explicabo aliquid dolores reiciendis voluptatibus omnis harum hic, error vitae deleniti odio quisquam? Quam.</small>
                     </div>
-                    <div class="col-12 col-lg-8">
+                    <div class="col-12 col-lg-7">
                         <img class="house-img m-auto" src="{%static 'images/growth.png'%}" alt="{{ i.name }}">
                     </div>
                    
@@ -121,12 +121,12 @@
 
               </div>
               <div class="swiper-slide">
-                <div class="row m-0 p-4">
-                    <div class="col-12 col-lg-8">
+                <div class="row m-0 p-4 justify-content-center">
+                    <div class="col-12 col-lg-7">
                             <img class="house-img m-auto" src="{%static 'images/sucess.jpeg'%}" alt="{{ i.name }}">
                         
                     </div>
-                    <div class="col-12 col-lg-4 my-auto p-3">
+                    <div class="col-12 col-lg-3 my-auto p-3">
                         <h4 class="frontHead text-danger">
                             Your Carrer
                         </h4>
@@ -247,17 +247,18 @@
                 </div>
            </div>
            <div class="col-12 col-lg-4 mt-4">
-            <div class="teamBox text-center">
-               
-               <div class="teambelow">
-               <img src="{%static 'images/3.jpg'%}" alt="Gantabya Ek">
-               <div class="maintain">
+                <div class="teamBox text-center">
+                
+                <div class="teambelow">
+                <img src="{%static 'images/3.jpg'%}" alt="Gantabya Ek">
+                <div class="maintain">
 
-               </div>
-               <small>MARKETER</small>
-               <h6 class="mt-2">Bishwo Vijay Khadka</h6>
-               <small>Lorem ipsum dolor sit amet consectetur, adipisicing elit. At necessitatibus sunt et magnam debitis repellendus eaque corporis ad voluptates nobis labore ab quia, illo temporibus totam illum eveniet iusto alias!</small>
-              </div>
+                </div>
+                <small>MARKETER</small>
+                <h6 class="mt-2">Bishwo Vijay Khadka</h6>
+                <small>Lorem ipsum dolor sit amet consectetur, adipisicing elit. At necessitatibus sunt et magnam debitis repellendus eaque corporis ad voluptates nobis labore ab quia, illo temporibus totam illum eveniet iusto alias!</small>
+                </div>
+                </div>
             </div>
        </div>
 
@@ -311,8 +312,176 @@
        
     </div>
 
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mt-3 p-3 text-center">
+                <h3 class="text-center">Course Content</h3>
+                <small >Our article about course and navigating your path</small>
+            </div>
+    
+            <div class="col-12 col-lg-4 mt-3 p-3">
+                <a href="{%url 'landing:courseDetail'%}">
+                    <div class="courseBox">
+                        <img src="{%static 'images/growth.png'%}" alt="">
+                        <div class="p-3">
+                            <small>BscIT</small>
+                            <h4>
+                                What are the best college for BscIT
+                            </h4>
+                            <p class="mt-3">
+                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt incidunt commodi saepe ipsa voluptatibus necessitatibus itaque repellat, ratione, quo tempora minus laudantium! Distinctio, sapiente voluptatibus nemo sunt ipsam quia illo?
+                            </p>
+        
+                            <small class="mt-3">
+                                02-01-2021
+                            </small>
+                        </div>
+                    </div>
+                </a>
+              
+            </div>
+    
+            <div class="col-12 col-lg-4 mt-3 p-3">
+                <div class="courseBox">
+                    <img src="{%static 'images/growth.png'%}" alt="">
+                    <div class="p-3">
+                        <small>BscIT</small>
+                        <h4>
+                            What are the best college for BscIT
+                        </h4>
+                        <p class="mt-3">
+                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt incidunt commodi saepe ipsa voluptatibus necessitatibus itaque repellat, ratione, quo tempora minus laudantium! Distinctio, sapiente voluptatibus nemo sunt ipsam quia illo?
+                        </p>
+    
+                        <small class="mt-3">
+                            02-01-2021
+                        </small>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="col-12 col-lg-4 mt-3 p-3">
+                <div class="courseBox">
+                    <img src="{%static 'images/growth.png'%}" alt="">
+                    <div class="p-3">
+                        <small>BscIT</small>
+                        <h4>
+                            What are the best college for BscIT
+                        </h4>
+                        <p class="mt-3">
+                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt incidunt commodi saepe ipsa voluptatibus necessitatibus itaque repellat, ratione, quo tempora minus laudantium! Distinctio, sapiente voluptatibus nemo sunt ipsam quia illo?
+                        </p>
+    
+                        <small class="mt-3">
+                            02-01-2021
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+
    
     
+    
+    <div class="container-fuild m-0 p-0 mt-5">
+        <h2 class="text-center mb-5 ">WHAT ARE STUDENTS SAYS</h2>
+
+        <div class="row m-0 p-0">
+            <div class="col-lg-5 col-12 m-0 p-0">
+                <div class="row m-0 p-0">
+                     <div class="col-6 p-0 m-0 studentbox">
+                        <img src="{%static 'images/student1.jpeg'%}" alt="Gantabya Ek">
+                        <div class="stuboxdes">
+                            <h5>Sumit Thapa</h5>
+                            <small>
+                                This is best guide ever, Thank you for guiding me sir
+                            </small>
+
+                        </div>
+                     </div>
+                     <div class="col-6  p-0 m-0 studentbox">
+                        <img src="{%static 'images/student3.jpeg'%}" alt="Gantabya Ek">
+                        <div class="stuboxdes2">
+                            <h5>Sumit Thapa</h5>
+                            <small>
+                                This is best guide ever, Thank you for guiding me sir
+                            </small>
+
+                        </div>
+                     </div>
+                     <div class="col-6 p-0 m-0  studentbox">
+                        <img src="{%static 'images/student4.png'%}" alt="Gantabya Ek">
+                        <div class="stuboxdes3">
+                            <h5>Sumit Thapa</h5>
+                            <small>
+                                This is best guide ever, Thank you for guiding me sir
+                            </small>
+
+                        </div>
+                     </div>
+                     <div class="col-6  p-0 m-0 studentbox">
+                        <img src="{%static 'images/student5.jpeg'%}" alt="Gantabya Ek">
+                        <div class="stuboxdes4">
+                            <h5>Sumit Thapa</h5>
+                            <small>
+                                This is best guide ever, Thank you for guiding me sir
+                            </small>
+
+                        </div>
+                     </div>
+                </div>
+            </div>
+            <div class="col-lg-7 col-12 m-0 p-0">
+                <div class="col-12  p-0 m-0 groupBox">
+                    <img src="{%static 'images/student2.jpeg'%}" alt="Gantabya Ek">
+                    <div class="grpboxdes text-center">
+                        <h1 class="text-light">
+                            Thank you for guiding us
+                        </h1>
+                        <small class="text-light">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure debitis explicabo natus sapiente incidunt ab numquam voluptate, nisi beatae obcaecati optio quidem vitae odit ducimus ut, illo voluptatum cumque rerum!</small>
+                    </div>
+                 </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <div container-fluid mt-5>
+        <h2 class="text-center mt-5">
+            Get to know more about us
+        </h2>
+        <div class="row mt-3">
+            <div class="col-6 col-lg-3 mt-3 text-center contact-ico">
+                <i class="fa fa-phone conIcon"></i>
+                <p class="mt-2">
+                    +977 9861517161
+                </p>
+            </div>
+            <div class="col-6 col-lg-3 mt-3 text-center contact-ico">
+                <i class="fa fa-map-location-dot conIcon"></i>
+                <p class="mt-2">
+                    Sundhara, kathmandu
+                </p>
+            </div>
+            <div class="col-6 col-lg-3 mt-3 text-center contact-ico">
+                <i class="fa fa-mail-forward conIcon"></i>
+                <p class="mt-2">
+                    info@gantabyaek.com
+                </p>
+            </div>
+            <div class="col-6 col-lg-3 mt-3 text-center contact-ico">
+                <i class="fa fa-internet-explorer conIcon"></i>
+                <p class="mt-2">
+                    www.gantabyaek.com
+                </p>
+            </div>
+        </div>
+    </div>
+
+
     <script>
         const swiper = new Swiper('.swiper', {
             // Optional parameters
@@ -341,6 +510,7 @@
           });
         
     </script>
+
     {% endblock content %}
     <div class="container-fluid bg-light m-0 mt-5">
         <div class="row m-0 mt-5">
