@@ -14,6 +14,15 @@
     font-family: normals;
     src: url('../fonts/Saira_Condensed/SairaCondensed-Regular.ttf');
 }
+.text-danger{
+  color: #114084!important;
+}
+.text-primary{
+  color:  #3466aa!important;
+}
+body{
+  background-color: #f7fbff;
+}
 
 h1, h2, h3{
     font-family: sans-serif;
@@ -120,15 +129,37 @@ h1, h2, h3{
   background-size: cover;
 }
 .contactbox{
+ 
   width: 80%;
   background-color: white;
 }
-
+.contactPlace{
+  height: 400px;
+  background-image: url('../images/contact.webp');
+  background-size: cover;
+}
 .groupBox:hover img{
   filter:brightness(80%);
 
 }
 
+.serviceBox1{
+  background-color: #82b7dc;
+}
+
+
+.serviceBox2{
+  background-color: #F1F1F1;
+}
+
+
+.serviceBox3{
+  background-color: #808080;
+}
+
+.sebpx{
+  font-size: 40px;
+}
 .grpboxdes{
   position: absolute;
   left: 0;
@@ -159,6 +190,9 @@ p, small, .nav-link{
     border: none;
     color:white;
     background-color:#022f72;
+}
+.navbar{
+  background-color:aliceblue
 }
 
 .navbar-brand img{
@@ -359,11 +393,22 @@ a{
     border-radius: 5px;
     overflow: hidden;
 }
-#blogImage{
-  height: 400px;
- 
-
+#blogImage {
+  height: 500px;
+  position: relative;
+}
+#blogImage img{
+  height: 100%;
+  filter: brightness(60%);
   width: 100%;
+}
+.blog-head-sb{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #82b7dc;
+  left: 0;
+  right: 0;
 }
 
 .blogImage{
@@ -386,4 +431,49 @@ a{
 
 .abtimg img{
  width:80%
+}
+
+
+/* About page design extra style */
+
+.about-gantabya{
+  background-color:  #82b7dc;
+  padding: 30px;
+}
+.about-cap{
+  font-size: 70px;
+}
+.about-student{
+  border: 1px solid grey;
+  border-radius: 5px;
+
+}
+
+.about-student img{
+  height: 220px;
+  width: 100%;
+}
+
+.modal-content {
+  border-radius: 10px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1); 
+}
+.modal-header {
+  background-color: #f0f0f0; 
+  border-top-left-radius: 20px; 
+  border-top-right-radius: 20px;
+  border-bottom: none;
+}
+.modal-body {
+  padding: 20px;
+}
+.modal-footer {
+  border-top: none; 
+}
+
+/* Course Deatils  */
+.course-info-img{
+
+  width: 20%;
+  height: 60px;
 }

@@ -1,34 +1,131 @@
 {% extends 'index.html' %}
 {% load static %}
 {% block title %}
-    Course Details
+    {{course.name}}
 {% endblock title %}
 
 
 
 
 {% block content %}
-    <div class="container-fluid">
-        <div class="row">
+    <div class="container-fluid m-0 p-0">
+        <div class="row m-0 p-0">
+            <div class="col-12 col-lg-12 p-0 m-0">
+                <div id="blogImage">
+                    {% if course.image %}
+                    <img  src="{{course.image.url}}" alt="Gantabya Ek">
+                    {%else%}
+                    <img src="{%static 'images/contact.webp'%}" alt="Gantabya Ek">
+                    {% endif %}
 
-            <div class="col-lg-7 col-12 mt-4">
-                <div class="d-flex justify-content-between mb-3">
-                    <small>BScIT</small>
-                    <small>2022-02-07</small>
+                    <div class="text-center blog-head-sb p-3">
+                        <small>
+                            {{course.category}}
+                        </small>
+                        <h4>
+                            {{course.name}}
+                        </h4>
+                        
+                    </div>
                 </div>
-                <img id="blogImage" src="{%static 'images/contact.webp'%}" alt="Gantabya Ek">
                
-                <h1 class="mt-3">
-                    What are the best college for BscIT
+                    
+                
+               
+            </div>
+
+            <div class="col-12 mt-5">
+                <div class="row m-0 p-0 m-auto">
+                    <div class="col-6 col-lg-4 mt-5">
+                        <div class="d-flex">
+                            <img class="course-info-img" src="{%static 'images/courseDuration.png'%}" alt="">
+                            <div class="my-auto ms-4">
+                                <h4>Course Duration</h4>
+                                <h6>{{course.course_duration}}</h6>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-6 col-lg-4 mt-5">
+                        <div class="d-flex ">
+                            <img class="course-info-img" src="{%static 'images/credit.png'%}" alt="">
+                            <div class="my-auto ms-4">
+                                <h4>Credit Hours</h4>
+                                <h6>{{course.credit_hour}}</h6>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-6 col-lg-4 mt-5">
+                        <div class="d-flex ">
+                            <img class="course-info-img" src="{%static 'images/entry.png'%}" alt="">
+                            <div class="my-auto ms-4">
+                                <h4>Entry Requirement</h4>
+                                <h6>{{course.entry_requirement}}</h6>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-6 col-lg-4 mt-5">
+                        <div class="d-flex ">
+                            <img class="course-info-img" src="{%static 'images/intake.png'%}" alt="">
+                            <div class="my-auto ms-4">
+                                <h4>Intake</h4>
+                                <h6>{{course.intake}}</h6>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-6 col-lg-4 mt-5">
+                        <div class="d-flex ">
+                            <img class="course-info-img" src="{%static 'images/accr.png'%}" alt="">
+                            <div class="my-auto ms-4">
+                                <h4>Accrediation</h4>
+                                <h6>{{course.accrediation}}</h6>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-6 col-lg-4 mt-5">
+                        <div class="d-flex ">
+                            <img class="course-info-img" src="{%static 'images/time.png'%}" alt="">
+                            <div class="my-auto ms-4">
+                                <h4>Admision Time</h4>
+                                <h6>{{course.time}}</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="row mt-5 p-4">
+            <br><br>
+            <div class="col-lg-7 col-12 mt-4 p-3">
+                
+               
+                <h1 class="mt-3 text-primary">
+                    {{course.name}}
                 </h1>
-                <p class="mt-2">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt incidunt commodi saepe ipsa voluptatibus necessitatibus itaque repellat, ratione, quo tempora minus laudantium! Distinctio, sapiente voluptatibus nemo sunt ipsam quia illo?
+                <hr>
+                <div class="d-flex justify-content-between mb-3">
+                    <small class="text-secondary">{{course.category}}</small>
+                    <div class="d-flex text-secondary">
+                        <i class="fa fa-calendar"></i> <small class="ms-2">2022-02-07</small>
+                    </div>
+                    
+                </div>
+                <br>
+                
+                <p>
+                    {{course.description}}
                 </p>
 
             </div>
 
-            <div class="col-lg-5 col-12 mt-4 p-2">
-                <div class="similarBox">
+            <div class="col-lg-5 col-12 mt-4 p-4">
+                <div class="similarBox mt-4">
                     <h5>Spotlight</h5>
                     <hr>
                     <div class="smallblog d-flex">
@@ -69,24 +166,7 @@
                 </div>
                
             </div>
-            <div>
-                <h1>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi nesciunt id, natus animi ducimus, nostrum magni pariatur ipsum eligendi quos blanditiis molestiae dignissimos neque quis ab, iure sequi rem! Officiis?</h1>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum itaque impedit magni temporibus quaerat nisi error quis odit molestiae a dolores praesentium sint dolorum, quisquam ratione suscipit mollitia consequatur illo. Lorem ipsum dolor sit amet, consectetur adipisicing elit. At cumque quam repudiandae sed alias a, veritatis voluptas voluptatem ratione, odit minima vero pariatur atque voluptatum laudantium voluptate ullam, molestias dolor.
-                </p>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum itaque impedit magni temporibus quaerat nisi error quis odit molestiae a dolores praesentium sint dolorum, quisquam ratione suscipit mollitia consequatur illo. Lorem ipsum dolor sit amet, consectetur adipisicing elit. At cumque quam repudiandae sed alias a, veritatis voluptas voluptatem ratione, odit minima vero pariatur atque voluptatum laudantium voluptate ullam, molestias dolor.
-                </p>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum itaque impedit magni temporibus quaerat nisi error quis odit molestiae a dolores praesentium sint dolorum, quisquam ratione suscipit mollitia consequatur illo. Lorem ipsum dolor sit amet, consectetur adipisicing elit. At cumque quam repudiandae sed alias a, veritatis voluptas voluptatem ratione, odit minima vero pariatur atque voluptatum laudantium voluptate ullam, molestias dolor.
-                </p>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum itaque impedit magni temporibus quaerat nisi error quis odit molestiae a dolores praesentium sint dolorum, quisquam ratione suscipit mollitia consequatur illo. Lorem ipsum dolor sit amet, consectetur adipisicing elit. At cumque quam repudiandae sed alias a, veritatis voluptas voluptatem ratione, odit minima vero pariatur atque voluptatum laudantium voluptate ullam, molestias dolor.
-                </p>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum itaque impedit magni temporibus quaerat nisi error quis odit molestiae a dolores praesentium sint dolorum, quisquam ratione suscipit mollitia consequatur illo. Lorem ipsum dolor sit amet, consectetur adipisicing elit. At cumque quam repudiandae sed alias a, veritatis voluptas voluptatem ratione, odit minima vero pariatur atque voluptatum laudantium voluptate ullam, molestias dolor.
-                </p>
-             </div>
+           
 
         </div>
     </div>
