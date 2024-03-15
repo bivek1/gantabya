@@ -1,0 +1,329 @@
+{% extends 'manager/dashboard.html' %} {% load static %} {% block title %}
+KYC Details {% endblock title %} {% block inside %}
+
+<style>
+    @media print
+            {
+            table { page-break-after:auto }
+            tr    { page-break-inside:avoid; page-break-after:auto }
+            td    { page-break-inside:avoid; page-break-after:auto }
+            thead { display:table-header-group }
+            tfoot { display:table-footer-group }
+            img{height: 400px; width: auto;}
+            }
+
+</style>
+ 
+<div class="row p-0 m-0 mt-3">
+  <div class="mt-3 mb-3">
+    <span class="breadcum">
+      <a href="{%url 'manager:dashboard'%}"> Dashboard </a>/<a href="{%url 'manager:kyc'%}"> KYC Verification </a>/ KYC Verification Detail
+    </span>
+  </div>
+
+  <div class="row m-0 mt-1">
+    <h6 class="p-0">KYC VERIFICATION DETAIL</h6>
+    <hr />
+    <div style="background-color:white;" class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <div class="row p-1">
+            <h6 class="p-2">Select Status of KYC</h6>
+            <hr>
+            <div class="d-flex m-2">
+                
+                {% if not real_customer.kyc_verified %}
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalVerify">
+                    Verify KYC
+                </button>
+                {% endif %}
+                    
+
+                   
+                      <!-- Modal -->
+                      <div class="modal fade" id="exampleModalVerify" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Are you sure want to reject this verification</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                           
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <a href="{%url 'manager:verify' cm.id%}">
+                                <button type="button" class="btn btn-sm btn-danger">Yes. Verify</button>
+                            </a>
+                            
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+    
+   
+              
+                    {% if not real_customer.kyc_verified %}
+                    <button class="ms-4 btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModalReject">
+                        Reject KYC
+                     </button>
+                     {%endif%}
+
+                      <!-- Modal -->
+                    <div class="modal fade" id="exampleModalReject" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Are you sure want to reject this verification</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                           
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <a href="{%url 'manager:rejectNow' cm.id%}">
+                                <button type="button" class="btn btn-sm btn-danger">Yes. Reject</button>
+                            </a>
+                            
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+             
+               
+            </div>
+           
+           
+            <div class="col-lg-12 col-12 pt-3 pb-3">
+                
+
+                <div class="contactDetails p-2">
+                    <div class="bg-danger p-2 text-light">
+                        <h6 class="my-auto">Contact Details</h6>
+                    </div>
+                   
+
+                    <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th scope="col">Fullname</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Number</th>
+                            
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row" class="text-capitalize">{{real_customer.admin.get_full_name}}</th>
+                            <td>
+                                <span class="text-success">
+                                    <i class="fa fa-envelope"></i>
+                                    {{real_customer.admin.email}}</span>
+                            </td>
+                            <td>
+                                <span class="text-secondary">
+                                    <i class="fa fa-mobile"></i>
+                                    {{real_customer.number}}</span>
+                            </td>
+                         
+                          </tr>
+                          
+                        </tbody>
+                    </table>
+                    <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th scope="col">Gender</th>
+                           
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td scope="row" class="text-capitalize">{{cm.gender}}</td>
+                          
+                         
+                          </tr>
+                          
+                        </tbody>
+                    </table>
+
+
+                    <!-- Address Information -->
+                    <div class="bg-danger p-2 text-light">
+                        <h6 class="my-auto">Address Details</h6>
+                    </div>
+                   
+
+                    <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th scope="col">Country</th>
+                            <th scope="col">City</th>
+                            <th scope="col">State</th>
+                            
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+
+                            <th scope="row" class="text-capitalize">{{real_customer.country}}</th>
+                            <td>
+                                <span>
+                                  
+                                    {{real_customer.city}}</span>
+                            </td>
+                            <td>
+                                <span class="text-secondary">
+                                   
+                                    {{real_customer.state}}</span>
+                            </td>
+                         
+                          </tr>
+                          <tr>
+                           
+                           
+                            <td>
+                               <b>
+                                Address
+                               </b>
+                            </td>
+                         
+                          </tr>
+                          <tr>
+                           
+                            <td>
+                              
+                                {{real_customer.address}}
+                               
+                            </td>
+                         
+                          </tr>
+                          
+                        </tbody>
+                    </table>
+
+
+                     <!-- Address Information -->
+                     <div class="bg-danger p-2 text-light">
+                        <h6 class="my-auto">Indentity Information</h6>
+                    </div>
+                   
+
+                    <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th scope="col">Image</th>
+                          
+                            <th scope="col">Date of birth</th>
+                          </tr>
+                        </thead>
+                        
+                        {% if cm %}
+                        <tbody>
+                            <tr>
+                              <th scope="row" style="width: 30%;">
+                                
+                                    
+                                    {% if cm.image %}
+                                    <a href="{{cm.image.url}}">
+                                        <img src="{{cm.image.url}}" alt="" style="height: auto; width: 50%;">
+                                    </a>
+                                        
+                                    {%else%}
+                                        <p class="text-center">
+                                            No Image has been added
+                                        </p>
+                                    {% endif %}
+
+                              
+                              </th>
+                              
+                              <td>
+                                  <span class="text-secondary">
+                                     {{cm.date_of_birth}}</span>
+                              </td>
+                           
+                            </tr>
+                           
+                           
+                          </tbody>
+                         
+                        {% endif %}
+                            
+                      
+                    </table>
+
+                    <table class="table">
+                        <tbody>
+                        <tr>
+                        
+                            <td>Document number</td>
+                            <td>Issued date</td>
+                            <td>Expiry date</td>
+                            
+                        </tr>
+                        <tr>
+                        
+                            <td>{{cm.document_number}}</td>
+                            <td>{{cm.issue_date}}</td>
+                            <td>{{cm.expiry_date}}</td>
+                            
+                        </tr>
+                       
+                        </tbody>
+                    </table>
+                    <div class="d-flex justify-content-around">
+                        
+                            
+                        {% if cm.document_front_image %}
+                        <div>
+                            <p>Document Front Image</p>
+                            <a href="{{cm.document_front_image.url}}" target="_blank">
+                                <img src="{{cm.document_front_image.url}}" alt="" style="width: auto; height: 200px;">
+                            </a>
+                        </div>
+                          
+                        {% endif %}
+                        {% if cm.document_back_image %}
+                            <div>
+                                <p>Documents Back Image</p>
+                                <a href="{{cm.document_back_image.url}}" target="_blank">
+                                    <img src="{{cm.document_back_image.url}}" alt="" style="width: auto; height: 200px;">
+                                </a>
+                            </div>
+                          
+                        {% endif %}
+
+                        
+                        </div>
+                    
+      
+
+                   
+                   
+                    
+                 
+                </div>
+            </div>
+           
+          
+        </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+    function printDiv() {
+        var printableContent = document.getElementById('printableContent');
+        var printWindow = window.open('', '_blank');
+        printWindow.document.write('<html><head><title>Print</title></head><body>');
+        printWindow.document.write('<style>');
+        printWindow.document.write('body { font-family: Arial, sans-serif; }');
+        printWindow.document.write('img { width: auto!important; height:400px!important; }');
+        printWindow.document.write('.printed-content { background-color: #f0f0f0; padding: 20px; border: 1px solid #ccc; border-radius: 5px; }');
+        printWindow.document.write('</style>');
+        printWindow.document.write(printableContent.innerHTML);
+        printWindow.document.write('</body></html>');
+        printWindow.document.close();
+        printWindow.print();
+    }
+</script>
+
+{% endblock inside %}

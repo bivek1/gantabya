@@ -15,12 +15,15 @@
     <link rel="stylesheet" href="{%static 'css/bootstrap.css'%}">
     <link rel="stylesheet" href="{%static 'css/font-awesome.css'%}">
     <link rel="stylesheet" href="{%static 'css/style.css'%}">
+    <link rel="stylesheet" href="{%static 'css/dashboard.css'%}">
+    <link rel="stylesheet" href="{%static 'css/mobile.css'%}">
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
     
 </head>
 <body>
-
+    
+    {% block navbar %}
     <nav class="navbar navbar-expand-lg fixed-top">
     
         <div class="container-fluid">
@@ -53,11 +56,31 @@
             </li>
 
             <li class="nav-item p-2">
-                <a class="nav-link active" aria-current="page" href="{%url 'landing:login'%}">
-                    <button class="btn btn-primary">
-                        Login
-                    </button>
-                </a>
+                
+                {% if user.is_authenticated %}
+                
+                    {% if user.user_type == 'owner' %}
+                        <a class="nav-link active" aria-current="page" href="{%url 'manager:dashboard'%}">
+                            
+                        </a>
+                    {%else%}
+                        <a class="nav-link active" aria-current="page" href="{%url 'customer:dashboard'%}">
+                            <i class="fa fa-dashboard"></i>
+                        </a>
+
+                    {% endif %}
+                    <a class="nav-link active" aria-current="page" href="{%url 'landing:logout'%}">
+                        <i class="fa fa-sign-out"></i>
+                    </a>
+                    
+                    {%else%}
+                    <a class="nav-link active" aria-current="page" href="{%url 'landing:login'%}">
+                      <i class="fa fa-sign"></i>
+                    </a>
+
+                {% endif %}
+                    
+                
             </li>
         </ul>
         </div>
@@ -68,6 +91,9 @@
 
     </div>
 
+    {% endblock navbar %}
+        
+   
     {% block content %}
     <style>
         .swiper {
@@ -228,7 +254,7 @@
                  <div class="teamBox text-center">
                     
                     <div class="teambelow">
-                    <img src="{%static 'images/1.jpg'%}" alt="Gantabya Ek">
+                    <img src="{%static 'images/1.jpg'%}" alt="After School Nepal">
                     <div class="maintain">
 
                     </div>
@@ -243,7 +269,7 @@
                 <div class="teamBox text-center">
                    
                    <div class="teambelow">
-                   <img src="{%static 'images/2.jpg'%}" alt="Gantabya Ek">
+                   <img src="{%static 'images/2.jpg'%}" alt="After School Nepal">
                    <div class="maintain">
 
                    </div>
@@ -257,7 +283,7 @@
                 <div class="teamBox text-center">
                 
                 <div class="teambelow">
-                <img src="{%static 'images/3.jpg'%}" alt="Gantabya Ek">
+                <img src="{%static 'images/3.jpg'%}" alt="After School Nepal">
                 <div class="maintain">
 
                 </div>
@@ -391,7 +417,7 @@
     <div class="container mt-2">
         <div class="row mt-5">
             <div class="col-12 col-lg-6 mt-3">
-                <img src="{%static 'images/studywithus.webp'%}" alt="Gantabya Ek" height="auto" width="100%">
+                <img src="{%static 'images/studywithus.webp'%}" alt="After School Nepal" height="auto" width="100%">
             </div>
             <div class="col-12 col-lg-6 mt-3">
                 <h2 class="mt-2">Study with us</h2>
@@ -482,7 +508,7 @@
             <div class="col-lg-5 col-12 m-0 p-0">
                 <div class="row m-0 p-0">
                      <div class="col-6 p-0 m-0 studentbox">
-                        <img src="{%static 'images/student1.jpeg'%}" alt="Gantabya Ek">
+                        <img src="{%static 'images/student1.jpeg'%}" alt="After School Nepal">
                         <div class="stuboxdes">
                             <h5>Sumit Thapa</h5>
                             <small>
@@ -492,7 +518,7 @@
                         </div>
                      </div>
                      <div class="col-6  p-0 m-0 studentbox">
-                        <img src="{%static 'images/student3.jpeg'%}" alt="Gantabya Ek">
+                        <img src="{%static 'images/student3.jpeg'%}" alt="After School Nepal">
                         <div class="stuboxdes2">
                             <h5>Sumit Thapa</h5>
                             <small>
@@ -502,7 +528,7 @@
                         </div>
                      </div>
                      <div class="col-6 p-0 m-0  studentbox">
-                        <img src="{%static 'images/student4.png'%}" alt="Gantabya Ek">
+                        <img src="{%static 'images/student4.png'%}" alt="After School Nepal">
                         <div class="stuboxdes3">
                             <h5>Sumit Thapa</h5>
                             <small>
@@ -512,7 +538,7 @@
                         </div>
                      </div>
                      <div class="col-6  p-0 m-0 studentbox">
-                        <img src="{%static 'images/student5.jpeg'%}" alt="Gantabya Ek">
+                        <img src="{%static 'images/student5.jpeg'%}" alt="After School Nepal">
                         <div class="stuboxdes4">
                             <h5>Sumit Thapa</h5>
                             <small>
@@ -525,7 +551,7 @@
             </div>
             <div class="col-lg-7 col-12 m-0 p-0">
                 <div class="col-12  p-0 m-0 groupBox">
-                    <img src="{%static 'images/student2.jpeg'%}" alt="Gantabya Ek">
+                    <img src="{%static 'images/student2.jpeg'%}" alt="After School Nepal">
                     <div class="grpboxdes text-center">
                         <h1 class="text-light">
                             Thank you for guiding us
@@ -601,6 +627,8 @@
     </script>
 
     {% endblock content %}
+    
+    {% block footer %}
     <div class="container-fluid bg-light m-0 mt-5">
         <div class="row m-0 mt-5">
             <p class="mt-4">
@@ -629,7 +657,7 @@
                     <ul class="p-0 m-0 mt-3">
                      
                       <a class="navbar-brand" href="/">
-                        <img src="{%static 'images/logog.png'%}" alt="Gantabya Ek">
+                        <img src="{%static 'images/logog.png'%}" alt="After School Nepal">
                       </a>
                     </ul>
                   
@@ -712,6 +740,9 @@
         </div>
 
     </div>
+    {% endblock footer %}
+        
+  
 
     <script src="{%static 'js/bootstrap.js'%}"></script>
     <script src="{%static 'js/font-awesome.js'%}"></script>

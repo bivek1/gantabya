@@ -1,0 +1,115 @@
+{% extends 'manager/dashboard.html' %}
+
+{% block title %}
+    {{user.username}} Dashboard
+{% endblock title %}
+
+
+{% block inside %}
+    <H1>सबै समाचार - {{status}}</H1>
+    <hr>
+    {% for i in messages  %}
+    <div class="alert alert-secondary alert-warning alert-dismissible fade show" role="alert">
+        {{i}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+   
+    {% endfor %}
+    <div class="col-12">
+        <p class="ps-3 my-auto" style="font-size: 20px; font-weight: bold; background-color: #d5d5d5; border-bottom: 2px solid rgb(126, 126, 126);">
+            सबै समाचार
+        </p>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">शीर्षक</th>
+                <th scope="col">श्रेणी</th>
+                <th scope="col">छोटो वर्णन</th>
+                <th scope="col">स्थिति</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for i in all_news  %}
+                <tr>
+                    <th scope="row">{{i.id}}</th>
+                    <td>  
+                        <a href="{%url 'homepage:newsDetails' i.id%}">
+                            <div class="cat-item mt-2">
+                                <p class="ps-3 my-auto">
+                                    {{i.title}}
+                                </p>
+                                
+                            </div>
+
+                        </a>
+                        <div class="d-flex" style="justify-content:center;">
+                            <a href="{%url 'manager:updateNews' i.id%}">
+                                <button class="btn-sm btn-secondary">
+                                    <i class="fa fa-edit"></i> Edit
+                                </button>
+                            </a>
+                            
+                            <button class="btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{i.id}}">
+                                <i class="fa fa-trash"></i> Delete
+                            </button>
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal{{i.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">के तपाइँ निश्चित रूपमा समाचार मेटाउन चाहनुहुन्छ?</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                    {{i.title}} | यो समाचार हटाउनुहोस्
+                                    </div>
+                                    <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <a href="{%url 'manager:deleteNews' i.id%}">
+                                        <button type="button" class="btn btn-danger">Delete</button>
+                                    </a>
+                                    
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                       
+                        
+                    </td>
+                    <td>
+                        <p class="badge bg-secondary">
+                            {{i.category}}
+                        </p>
+                    </td>
+                    <td>{{i.short_description}}</td>
+                    <td>
+                        <p class="badge bg-danger">
+                            {{i.status}}
+                        </p>
+                        
+                    </td>
+                    
+                    {% if i.image %}
+                    <td>
+                        <img src="{{i.image.url}}" alt="{{i.title}}" style="height: 100px; width: 100px;">
+                    </td>
+                    {% endif %}
+                        
+                   
+                  </tr>
+                 
+        
+              
+                {% endfor %}   
+             
+            </tbody>
+          </table>
+         
+
+    </div>
+   
+{% endblock inside %}
+    
+    

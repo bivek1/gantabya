@@ -1,0 +1,143 @@
+{% extends 'manager/dashboard.html' %}
+
+{% block title %}
+    {{user.username}} Dashboard
+{% endblock title %}
+
+
+{% block inside %}
+<style>
+    input{
+        font-family: Arial!important;
+    }
+   
+</style>
+<span class="breadcum">
+    <a href="{%url 'manager:dashboard'%}">
+        Dashboard
+    </a>/
+
+   
+       Admin List
+  
+    
+   
+  </span>
+    
+    {% for i in messages  %}
+    <div class="alert alert-secondary alert-warning alert-dismissible fade show" role="alert">
+        {{i}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+   
+    {% endfor %}
+        
+    <div class="row mt-4">
+      
+        <div class="col-12 col-lg-12 mt-4"  >
+            <div class="d-flex" style="justify-content: space-between;">
+                <p class="my-auto">
+                  Student List
+                </p>
+                
+            </div>
+            <table class="table align-middle mb-0 bg-white">
+                <thead class="bg-light">
+                  <tr>
+                    <th></th>
+                    <th></th>
+                   
+                    <th></th>
+                   
+                  </tr>
+                </thead>
+                <tbody>
+    
+            {% for i in all_category  %}
+            <tr>
+                <td>
+                    <div class="d-flex align-items-center">
+                      
+                      {% if i.image %}
+                      <img
+                      src="{{i.image.url}}"
+                      alt=""
+                      style="width: 45px; height: 45px"
+                      class="rounded-circle"
+                      />
+                          {%else%}
+                          <img
+                          src="https://mdbootstrap.com/img/new/avatars/8.jpg"
+                          alt=""
+                          style="width: 45px; height: 45px"
+                          class="rounded-circle"
+                          />
+                      {% endif %}
+                          
+                     
+                      <div class="ms-3">
+                        <p class="fw-bold mb-1">{{i.username}}</p>
+                       
+                      </div>
+                    </div>
+                  </td>
+                <td>
+                    <p class="my-auto text-center">
+                        {{i.username}}
+                    </p>
+                </td>
+                
+                <td>
+                    {% comment %} <a href="{%url 'manager:studentProfile' i.id%}">
+                        <button class="btn btn-sm btn-secondary">
+                            <i class="fa fa-eye"></i> View
+                        </button>
+                    </a> {% endcomment %}
+                    
+                    <button class="ms-3 btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{i.id}}">
+                        <i class="fa fa-trash"></i> Delete
+                    </button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal{{i.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Are you sure want to delete this student</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                            {{i.username}} | Are you sure want to delete this students?
+                            <p class="text-danger">
+                                This will disable student to login and destroy all his information
+                            </p>
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <a href="{%url 'manager:deleteStudent' i.id%}">
+                                <button type="button" class="btn btn-sm btn-danger">Delete</button>
+                            </a>
+                            
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </td>
+               
+              </tr>
+            {% endfor %}  
+                 
+                  
+            </tbody>
+            </table>
+           
+
+            <br><br>
+        </div>
+       
+     
+    </div>
+   
+  
+{% endblock inside %}
+    
+    

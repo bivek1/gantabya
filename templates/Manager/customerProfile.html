@@ -1,0 +1,479 @@
+{% extends 'manager/dashboard.html' %}
+{% load static %}
+{% block title %}
+    {{user.get_full_name}} Profile
+{% endblock title %}
+
+
+{% block inside %}
+<style>
+#profile-pic-container {
+  width: 200px;
+  height: 200px;
+  border: 1px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+#profile-pic {
+  max-width: 100%;
+  max-height: 100%;
+}
+#profile-pic-input{
+    width: 100px!important;
+    
+}
+</style>
+<div class="row p-0 m-0 mt-3">
+    <div class="mt-3 mb-3">
+      <span class="breadcum">
+        <a href="{%url 'manager:dashboard'%}">
+            Dashboard
+        </a>/
+        Profile
+      </span>
+    </div>
+
+    <div class="row p-0 m-0 mt-3">
+        <div class="col-lg-12 col-12 mt-3">
+            <div>
+                <div class="col-lg-12 col-12 ps-0 mt-3">
+                    <div class="p-1">
+                    
+                        <div class="col-12  mt-2">
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                  <p class="nav-link active text-primary" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Your Profile</p>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                  <p class="nav-link text-primary" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Edit Profile</p>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                  <p class="nav-link text-primary" id="messages-tab" data-bs-toggle="tab" data-bs-target="#messages" type="button" role="tab" aria-controls="messages" aria-selected="false">Scholorship</p>
+                                </li>
+                               
+                               
+                            </ul>
+                        </div>
+            
+            
+                        <div class="col-12 mt-2 p-0">
+                            <div class="tab-content">
+                                <div style="background-color:white;" class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                    <div class="row p-1">
+                                       
+                                        <div class="col-lg-8 col-12 pt-3 pb-3">
+                                            {% if not user.customer.kyc_verified %}
+                                            <div class="alert alert-light">
+                                                {% if  user.customer.rejected%}
+                                                <img src="{%static 'images/not-verified.png'%}" alt="" height="30px;" width="30px;">
+                                                <span class="text-danger">
+                                                    Your KYC is <span class="text-danger">
+                                                      <b>Rejected</b>
+                                                    </span>
+                                                </span>
+                                                 {%else%}
+                                                  <img src="{%static 'images/not-verified.png'%}" alt="" height="30px;" width="30px;">
+                                                  <span class="text-danger">
+                                                      Your KYC is not verified yet.
+                                                  </span>
+                                                {% endif %}
+                              
+                                                Please follow the link to verify.
+                                                <a href="{%url 'customer:verify'%}" class="text-success">
+                                                    Verify now
+                                                </a>
+                                              
+                                            </div>
+                                            {%else%}
+                                            <div class="alert alert-light">
+                                              <img src="{%static 'images/verified.png'%}" alt="" height="30px;" width="30px;">
+                                              <span class="text-danger">
+                                                  Your KYC is  verified
+                                              </span>
+                                            
+                                            </div>
+                          
+                                          {% endif %}
+                                            <div class="contactDetails p-2">
+                                                <div class="bg-danger p-2 text-light">
+                                                    <h6 class="my-auto">Contact Details</h6>
+                                                </div>
+                                               
+    
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                      <tr>
+                                                        <th scope="col">Fullname</th>
+                                                        <th scope="col">Email</th>
+                                                        <th scope="col">Number</th>
+                                                        
+                                                      </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                      <tr>
+                                                        <th scope="row" class="text-capitalize">{{real_customer.admin.get_full_name}}</th>
+                                                        <td>
+                                                            <span class="text-success">
+                                                                <i class="fa fa-envelope"></i>
+                                                                {{real_customer.admin.email}}</span>
+                                                        </td>
+                                                        <td>
+                                                            <span class="text-secondary">
+                                                                <i class="fa fa-mobile"></i>
+                                                                {{real_customer.number}}</span>
+                                                        </td>
+                                                     
+                                                      </tr>
+                                                      
+                                                    </tbody>
+                                                </table>
+                                                 <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th scope="col">Gender</th>
+                           
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td scope="row" class="text-capitalize">{{cm.gender}}</td>
+                          
+                         
+                          </tr>
+                          
+                        </tbody>
+                    </table>
+    
+    
+                                                <!-- Address Information -->
+                                                <div class="bg-danger p-2 text-light">
+                                                    <h6 class="my-auto">Address Details</h6>
+                                                </div>
+                                               
+    
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                      <tr>
+                                                        <th scope="col">Country</th>
+                                                        <th scope="col">City</th>
+                                                        <th scope="col">State</th>
+                                                        
+                                                      </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                      <tr>
+    
+                                                        <th scope="row" class="text-capitalize">{{real_customer.country}}</th>
+                                                        <td>
+                                                            <span>
+                                                              
+                                                                {{real_customer.city}}</span>
+                                                        </td>
+                                                        <td>
+                                                            <span class="text-secondary">
+                                                               
+                                                                {{real_customer.state}}</span>
+                                                        </td>
+                                                     
+                                                      </tr>
+                                                      <tr>
+                                                       
+                                                       
+                                                        <td>
+                                                           <b>
+                                                            Address
+                                                           </b>
+                                                        </td>
+                                                     
+                                                      </tr>
+                                                      <tr>
+                                                       
+                                                        <td>
+                                                          
+                                                            {{real_customer.address}}
+                                                           
+                                                        </td>
+                                                     
+                                                      </tr>
+                                                      
+                                                    </tbody>
+                                                </table>
+    
+    
+                                                 <!-- Address Information -->
+                                                 <div class="bg-danger p-2 text-light">
+                                                    <h6 class="my-auto">Indentity Information</h6>
+                                                </div>
+                                               
+    
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                      <tr>
+                                                        <th scope="col">Image</th>
+                                                      
+                                                        <th scope="col">Date of birth</th>
+                                                      </tr>
+                                                    </thead>
+                                                    
+                                                    {% if cm %}
+                                                    <tbody>
+                                                        <tr>
+                                                          <th scope="row" style="width: 30%;">
+                                                            
+                                                                
+                                                                {% if cm.image %}
+                                                                <a href="{{cm.image.url}}">
+                                                                    <img src="{{cm.image.url}}" alt="" style="height: auto; width: 50%;">
+                                                                </a>
+                                                                    
+                                                                {%else%}
+                                                                    <p class="text-center">
+                                                                        No Image has been added
+                                                                    </p>
+                                                                {% endif %}
+                
+                                                          
+                                                          </th>
+                                                          
+                                                          <td>
+                                                              <span class="text-secondary">
+                                                                 {{cm.date_of_birth}}</span>
+                                                          </td>
+                                                       
+                                                        </tr>
+                                                       
+                                                       
+                                                      </tbody>
+                                                     
+                                                    {% endif %}
+                                                        
+                                                  
+                                                </table>
+    
+                                                <table class="table">
+                                                    <tbody>
+                                                    <tr>
+                                                    
+                                                        <td>Document number</td>
+                                                        <td>Issued date</td>
+                                                        <td>Expiry date</td>
+                                                        
+                                                    </tr>
+                                                    <tr>
+                                                    
+                                                        <td>{{cm.document_number}}</td>
+                                                        <td>{{cm.issue_date}}</td>
+                                                        <td>{{cm.expiry_date}}</td>
+                                                        
+                                                    </tr>
+                                                   
+                                                    </tbody>
+                                                </table>
+                                                <div class="d-flex justify-content-around">
+                                                    
+                                                        
+                                                    {% if cm.document_front_image %}
+                                                    <div>
+                                                        <p>Document Front Image</p>
+                                                        <a href="{{cm.document_front_image.url}}" target="_blank">
+                                                            <img src="{{cm.document_front_image.url}}" alt="" style="width: auto; height: 200px;">
+                                                        </a>
+                                                    </div>
+                                                      
+                                                    {% endif %}
+                                                    {% if cm.document_back_image %}
+                                                        <div>
+                                                            <p>Documents Back Image</p>
+                                                            <a href="{{cm.document_back_image.url}}" target="_blank">
+                                                                <img src="{{cm.document_back_image.url}}" alt="" style="width: auto; height: 200px;">
+                                                            </a>
+                                                        </div>
+                                                      
+                                                    {% endif %}
+                    
+                                                    
+                                                    </div>
+                                                
+                                  
+    
+                                               
+                                               
+                                                
+                                             
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-12 pt-3 pb-3">
+                                            <p class="text-center pb-3">Profile Image</p>
+                                            {% if user.customer.profil_pic %}
+                                           
+                                            <div class="text-center m-auto" id="profile-pic-container">
+                                                <form action="{%url 'customer:updatePic'%}" method="POST" enctype="multipart/form-data">
+                                                    <input class="mb-2" type="file" id="profile-pic-input" name ="profile" required>
+                                                    <!-- <img class="my-auto" src="" alt="" id="profile-pic"> -->
+                                                    <div class="text-center" id="profile-pic-container">
+                                                        <img id="profile-pic" class="my-auto" src="{{user.customer.profil_pic.url}}" alt="" style="height: auto; width: 100%;">
+                                                    </div>
+                                                  
+                                                    {% csrf_token %}
+                                                    <button id="shownbtn" class="btn btn-success mt-2" type="submit">
+                                                        Update Profile
+                                                    </button>
+                                                
+                                                </form>
+                                               
+                                                
+                                            </div>
+                                            
+                                                
+                                            {%else%}
+                                            <div class="text-center m-auto" id="profile-pic-container">
+                                                <form action="{%url 'customer:updatePic'%}" method="POST" enctype="multipart/form-data">
+                                                    <input class="mb-2" type="file" id="profile-pic-input" name ="profile" required>
+                                                    <img class="my-auto" src="" alt="" id="profile-pic">
+                                                    <i class="fa fa-user-circle text-primary my-auto" style="font-size: 130px;">
+                    
+                                                    </i> 
+                                                  
+                                                    {% csrf_token %}
+                                                    <button id="shownbtn" class="btn btn-success mt-4" type="submit">
+                                                        Update Profile
+                                                    </button>
+                                                
+                                                </form>
+                                               
+                                                
+                                            </div>
+                                               
+                                            {% endif %}
+                                        </div>
+        
+                                      
+                                    </div>
+                
+                                </div>
+                                <!-- ENquires -->
+                                <div  style="background-color:white;" class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                    <div class="m-0 p-0">
+                                        <div class="p-2" id="login-card">
+                                       
+                                            <form action="" method="post">
+                                                <h5>
+                                                    Edit your profile
+                                                </h5>
+                                                <hr>
+                                                <div class="row p-0 m-0">
+                                                    <div class="col-6">
+                                                        <label for="first_name">First Name</label>
+                                                        <input type="text" name="first_name" id="" value="{{real_customer.admin.first_name}}" required class="form-control" placeholder="First Name">
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <label for="last_name">Last Name</label>
+                                                        <input type="text" name="last_name" id="" value="{{real_customer.admin.last_name}}" required class="form-control" placeholder="Last Name">
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <label for="email">Email</label>
+                                                        <input type="email" name="email" id="" value="{{real_customer.admin.email}}" required class="form-control" placeholder="Email Address">
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <label for="email">{{form.number.label_tag}}</label>
+                                                        {{form.number}}
+                                                        {{form.number.errors}}
+                                                    </div>
+                                                    
+                            
+                                                    <div class="col-6">
+                                                        <label for="email">{{form.country.label_tag}}</label>
+                                                        {{form.country }}
+                                                        {{form.country.errors}}
+                                                    </div>
+                            
+                                                    <div class="col-12">
+                                                        <label for="email">{{form.city.label_tag}}</label>
+                                                        {{form.city}}
+                                                        {{form.city.errors}}
+                                                    </div>
+                            
+                                            
+                                                    <div class="col-6">
+                                                        <label for="email">{{form.state.label_tag}}</label>
+                                                        {{form.state}}
+                                                        {{form.state.errors}}
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <label for="email">{{form.address.label_tag}}</label>
+                                                        {{form.address}}
+                                                        {{form.address.errors}}
+                                                    </div>
+                                                
+                                                    {% csrf_token %}
+                                                    <button class="btn btn-primary mt-3 m-auto w-80" type="submit">
+                                                        <i class="fa fa-user-plus"></i>  Update Profile
+                                                    </button>
+                            
+                                                </div>
+                                            
+                                            </form>
+                                        </div>
+                                    </div>
+                                
+                                </div>
+                                <div  style="background-color:white;" class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">
+                                    {% for i in scho%}
+                                        <div class="transaction-div p-2" id="login-card" data-bs-toggle="modal" data-bs-target="#exampleModalEdit{{i.id}}">
+                                            <div class="d-flex">
+                                            
+                                                <i class="trans-icon fa fa-arrow-alt-circle-up" style="font-size: 50px; color:red;"></i>
+                                                <span class="ps-2 my-auto" >
+                                                    <h6 class="text-primary ps-3">
+                                                   Applied for {{i.course.name}}
+                                                    
+                                                
+                                                </span>
+                                                <p> Applied at: {{i.created_at}}</p>
+                                                
+                                            
+                                            </div>
+                                            
+                                            <div>
+                                            
+                                            </div>
+                                        </div>
+                                    {%endfor%}
+                                </div>
+                               
+                               
+                            </div>
+                        </div>
+                    </div>
+        
+                   
+        
+                </div>
+            </div>
+        </div>
+      
+       
+    </div>
+</div>
+
+<script>
+    $('#shownbtn').hide()
+    document.getElementById('profile-pic-input').addEventListener('change', function(event) {
+    var input = event.target;
+    if (input.files && input.files[0]) {
+        $('#shownbtn').show()
+        $('.fa-user-circle').hide()
+        var reader = new FileReader();
+        reader.onload = function(e) {
+        document.getElementById('profile-pic').setAttribute('src', e.target.result);
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+    });
+</script>
+{% endblock inside %}
+    
+    

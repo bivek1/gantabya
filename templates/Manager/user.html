@@ -1,0 +1,173 @@
+{% extends 'manager/dashboard.html' %}
+
+{% block title %}
+    {{user.username}} Dashboard
+{% endblock title %}
+
+
+{% block inside %}
+<style>
+    input{
+        font-family: Arial!important;
+    }
+   
+</style>
+<span class="breadcum">
+    <a href="{%url 'manager:dashboard'%}">
+        Dashboard
+    </a>/
+
+   
+       Admin List
+  
+    
+   
+  </span>
+    
+    {% for i in messages  %}
+    <div class="alert alert-secondary alert-warning alert-dismissible fade show" role="alert">
+        {{i}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+   
+    {% endfor %}
+        
+    <div class="row mt-4">
+       <div class="col-12 col-lg-8 card p-3">
+            <h4>Add new admin</h4>
+            <form action="" method="post" enctype="multipart/form-data">
+                {{form}}
+                <input type="text" name="edit" id="edit" hidden>
+                {% csrf_token %}
+                <button class="btn btn-primary mt-4" id="add_btn">Add new admin</button>
+                <button type="reset" class="btn btn-warning ps-3 mt-4">RESET</button>
+            </form>
+
+            
+       </div>
+        <div class="col-12 col-lg-4 mt-4"  >
+            <div class="d-flex" style="justify-content: space-between;">
+                <p class="my-auto">
+                   Admin List
+                </p>
+                
+            </div>
+            <table class="table align-middle mb-0 bg-white">
+                <thead class="bg-light">
+                  <tr>
+                    <th></th>
+                    <th></th>
+                   
+                    <th></th>
+                   
+                  </tr>
+                </thead>
+                <tbody>
+    
+            {% for i in all_category  %}
+            <tr>
+                <td>
+                    <div class="d-flex align-items-center">
+                      
+                      {% if i.image %}
+                      <img
+                      src="{{i.image.url}}"
+                      alt=""
+                      style="width: 45px; height: 45px"
+                      class="rounded-circle"
+                      />
+                          {%else%}
+                          <img
+                          src="https://mdbootstrap.com/img/new/avatars/8.jpg"
+                          alt=""
+                          style="width: 45px; height: 45px"
+                          class="rounded-circle"
+                          />
+                      {% endif %}
+                          
+                     
+                      <div class="ms-3">
+                        <p class="fw-bold mb-1">{{i.name}}</p>
+                        <p class="text-muted mb-0">{{i.category}}</p>
+                      </div>
+                    </div>
+                  </td>
+                <td>
+                    <p class="my-auto text-center">
+                        {{i.username}}
+                    </p>
+                </td>
+                
+                <td>
+                    <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{i.id}}">
+                        <i class="fa fa-trash"></i> Delete
+                    </button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal{{i.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Are you sure want to delete this admin</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                            {{i.username}} | DELETE THIS ADMIN
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <a href="{%url 'manager:deleteUser' i.id%}">
+                                <button type="button" class="btn btn-sm btn-danger">Delete</button>
+                            </a>
+                            
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </td>
+               
+              </tr>
+            {% endfor %}  
+                 
+                  
+            </tbody>
+            </table>
+           
+
+            <br><br>
+        </div>
+       
+        <div class="col-12 col-lg-8 m-auto mt-5 card p-3">
+            <div class="passwordChange">
+                <h6 class="text-center">Password Change</h6>
+                <p class="text-center">You can change your password here.</p>
+                <form action="{%url 'manager:checkPassword'%}" method="post">
+                    {{password_form}}
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary mt-4">
+                       Change your password
+                    </button>
+                </form>
+            </div>
+           
+        </div>   
+    </div>
+    <script>
+        function editCategory(self, id, name, slug){
+        
+            document.getElementById('add_btn').innerHTML = "अद्यावधिक गर्न"
+            parent = self.parentElement
+            
+            parent.style.backgroundColor = "red"
+
+
+            document.getElementById('edit').value = id
+            document.getElementById('id_name').value = name
+            document.getElementById('id_slug').value = slug
+           
+    
+        }
+    </script>
+  
+{% endblock inside %}
+    
+    

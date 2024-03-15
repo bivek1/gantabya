@@ -1,0 +1,125 @@
+{% extends 'customer/dashboard.html' %}
+
+{% block title %}
+    {{user.username}} Dashboard
+{% endblock title %}
+
+{% block inside %}
+<div class="mt-4">
+    <span class="breadcum mt-4">
+        <a href="{%url 'customer:dashboard'%}">
+            Dashboard
+        </a>/
+    
+        <a >
+            Scholorship Courses
+        </a>
+       
+       
+      </span>
+</div>
+
+    {% for i in messages  %}
+    <div class="alert alert-secondary alert-warning alert-dismissible fade show" role="alert">
+        {{i}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+   
+    {% endfor %}
+    <div class="col-12 mt-3  table-responsive" >
+       
+        <table class="table align-middle mb-0 bg-white">
+           
+            <tbody>
+
+        {% for i in all_news  %}
+        <tr>
+            <td>
+              <div class="d-flex align-items-center">
+                
+                {% if i.image %}
+                <img
+                src="{{i.image.url}}"
+                alt=""
+                style="width: 45px; height: 45px"
+                class="rounded-circle"
+                />
+                    {%else%}
+                    <img
+                    src="https://mdbootstrap.com/img/new/avatars/8.jpg"
+                    alt=""
+                    style="width: 45px; height: 45px"
+                    class="rounded-circle"
+                    />
+                {% endif %}
+                    
+               
+                <div class="ms-3">
+                  <p class="fw-bold mb-1">{{i.name}}</p>
+                  <p class="text-muted mb-0">{{i.category}}</p>
+                </div>
+              </div>
+            </td>
+           
+
+            <td class="text-center">
+                {{i.intake}}
+            </td>
+            <td class="text-center">
+                {{i.accrediation}}
+            </td>
+            <td>
+                
+               
+                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal{{i.id}}">
+                    Apply For Scholorship
+                </button>
+
+                <div class="modal fade" id="exampleModal{{i.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Apply for scholorship</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <h4>{{i.name}}</h4>
+                           
+                            <p>
+                                Why we should give scholorship to you?
+                            </p>
+                            <hr>
+                            <form action="{%url 'customer:applyNow' i.id%}" method="post">
+                                <textarea name = "reason" class="form-control" maxlength="300" style="height: 300px;"></textarea>
+                              
+                                <br>
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-primary">
+                                    Apply Now
+                                </button>
+
+                            </form>
+                         
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Dismiss</button>
+                      
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </td>
+          </tr>
+        {% endfor %}  
+             
+              
+        </tbody>
+        </table>
+
+        
+
+    </div>
+   
+{% endblock inside %}
+    
+    

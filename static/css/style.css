@@ -204,12 +204,16 @@ p, small, .nav-link{
   .form-control {
     border: none;
    
-    border-radius: 0;
+    border-radius: 5px;
     padding: 10px;
-
+    border: 1px solid grey;
     background-color: white;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     transition: all 0.3s ease;
+  }
+
+  .create-icon{
+    padding-left: 40px;
   }
   .about-box{
     width: 100%;
@@ -364,12 +368,33 @@ a{
     transform: translateY(-50%);
     color: #666; /* Adjust color as needed */
   }
-  
-  .form-control {
-    padding-left: 2.5rem; /* Adjust padding to accommodate the icon */
-  }
-  
 
+  #kyc_rec{
+    cursor: pointer;
+}
+
+#kyc_rec:hover{
+    background-color: rgb(236, 236, 236);
+}
+  
+#image-preview{
+  height: 200px;
+  width: auto;
+}
+.dash-box{
+  cursor: pointer;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+}
+.dash-box:hover{
+  background-color: #e9f2fc;
+  transition-duration: 2s;
+}
+.dash-box img{
+  height: 100px;
+  width: 100px;
+}
 
 .contact-div img{
     height: auto;

@@ -1,0 +1,122 @@
+{% extends 'manager/dashboard.html' %}
+{% load static %}
+{% block title %}
+    Scholorship Applied
+{% endblock title %}
+
+
+{% block inside %}
+<style>
+     #id_image{
+        font-family: Arial!important;
+    }
+</style>
+<div class="mt-3 mb-3">
+    <span class="breadcum">
+      <a href="{%url 'manager:dashboard'%}">
+          Dashboard
+      </a>/
+      Scholorship
+     
+    </span>
+  </div>   
+    <div class="d-flex justify-content-between p-2">
+        <H3>Applied Scholorship</H3>
+       
+    </div>
+   
+    <hr>
+    
+    {% for i in messages  %}
+    <div class="alert alert-secondary alert-warning alert-dismissible fade show" role="alert">
+        {{i}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+   
+    {% endfor %}
+        
+    <div class="row  mt-4">
+        <div  style="background-color:white;" class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">
+            {% for i in scho%}
+                <div class="transaction-div p-2" id="login-card" data-bs-toggle="modal" data-bs-target="#exampleModal{{i.id}}">
+                    <div class="d-flex justify-content-between">
+                       
+
+                        <div class="d-flex"> 
+                            <i class="trans-icon fa fa-arrow-alt-circle-up" style="font-size: 50px; color:red;"></i>
+                            <span class="ps-3 my-auto" >
+                                <h6 class="text-primary">
+                               Applied for {{i.course.name}}
+                               </h6>
+                               <p> Applied at: {{i.created_at}}</p>
+
+                            </span>
+                            
+                        </div>
+                        <div>
+                            
+                            {% if i.customer.profil_pic %}
+                            <img src="{{i.customer.profil_pic.url}}" alt="" style="height:50px; width:50px; border-radius:50%;">
+                            {%else%}
+                            <img src="{%static 'images/user.webp'%}" alt="" style="height:50px; width:50px; border-radius:50%;">
+
+                            {% endif %}
+                                
+                            
+                        </div>
+
+                         <!-- Modal -->
+                        <div class="modal fade" id="exampleModal{{i.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Student Letter</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                {{i.remarks}} 
+                                </div>
+                                <hr>
+                                <div class="d-flex justify-content-between mt-3 p-3">
+                                    {% if user.customer.profil_pic %}
+                                    <img src="{{i.customer.profil_pic.url}}" alt="" style="height:150px; width:150px; border-radius:50%;">
+                                    {%else%}
+                                    <img src="{%static 'images/user.webp'%}" alt="" style="height:150px; width:150px; border-radius:50%;">
+
+                                    {% endif %}
+                                    <div class="my-auto">
+                                        <p>Applied By:</p>
+                                        <a href="{%url 'manager:studentProfile' i.customer.id%}">
+                                            <h4 class="text-primary">
+                                                {{i.customer.admin.get_full_name}}
+                                            </h4>
+                                       
+                                        </a>
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+                              
+                                
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                
+                        
+                        
+                    
+                    </div>
+                    
+                    <div>
+                    
+                    </div>
+                </div>
+            {%endfor%}
+        </div>
+    </div>
+  
+{% endblock inside %}
+    
+    

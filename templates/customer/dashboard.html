@@ -1,0 +1,216 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}
+    Dashboard
+{% endblock title %}
+
+    
+
+{% block navbar %}
+  
+{% endblock navbar %}
+  
+{% block content %}
+
+<div class="container-fluid">
+  <h3 class=" mt-4 text-primary text-center text-capitalize" id="text-head">
+    After School Nepal
+  </h3>
+  <hr>
+ 
+  <div class="d-flex justify-content-between">
+    <h5 class="my-auto">
+      <img src="{%static 'images/user.webp'%}" alt="" style="height: 60px; width:60px; border-radius:50%">
+      Hello <span class="text-danger">{{user.get_full_name}}</span> 
+    </h5>
+    <a href="{%url 'landing:logout'%}">
+      <div class="cat-item bg-light p-2">
+        <i class="fa fa-sign-out-alt" style="font-size: 30px;"></i>
+        <p class="ps-3 my-auto">
+            Logout
+        </p>
+      </div>   
+    </a>
+  </div>
+
+    
+      
+      
+      {% block inside %}
+      {% for i in messages  %}
+      <div class="alert alert-secondary alert-warning alert-dismissible fade show" role="alert">
+          {{i}}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+     
+      {% endfor %}
+
+        <div class="row m-0 mt-3">
+          <div class="mt-3 mb-3">
+            <span class="breadcum">
+              <a href="{%url 'manager:dashboard'%}">
+                  Dashboard
+              </a>/
+             
+            </span>
+          </div> <br><br>
+
+
+          {% if user.customer.kyc_verified %}
+            <div class="alert alert-light p-2 d-flex">
+              
+              <img src="{%static 'images/verified.png'%}" alt="Verified">
+              <p class="ps-4 text-dark my-auto"> Your KYC is verified </p>
+            </div>
+          {% endif %}
+
+
+          {% if kyc %}
+              <div class="alert alert-light p-2 d-flex">
+                <img src="{%static 'images/verified.png'%}" alt="Verified">
+                <p class="ps-4 text-dark my-auto"> Your KYC is verified </p>
+              </div>
+          {% endif %}
+           
+    
+            
+         
+          <!-- Selection Box -->
+          <div class="col-12 col-lg-3 mt-3">
+            <a href="{%url 'customer:courseStudent'%}">
+              <div class="dash-box p-2 d-flex justify-content-between">
+                <img src="{%static 'images/course.jpeg'%}" alt="">
+                <h5 class="my-auto">Course</h5>
+              </div>
+            </a>
+
+          </div>
+
+          <div class="col-12 col-lg-3 mt-3">
+            <a href="{%url 'customer:verify'%}">
+              <div class="dash-box p-2 d-flex justify-content-between">
+                <img src="{%static 'images/kyc.jpeg'%}" alt="">
+                <h5 class="my-auto">KYC</h5>
+              </div>
+            </a>
+           
+        </div>
+        {% if user.customer.kyc_verified %}
+          <div class="col-12 col-lg-3 mt-3">
+            <a href="{%url 'customer:scho'%}">
+              <div class="dash-box p-2 d-flex justify-content-between">
+                <img src="{%static 'images/scho.jpeg'%}" alt="">
+                <h5 class="my-auto">Scholorship</h5>
+              </div>
+            </a>
+           
+          </div>
+          {%else%}
+          <div class="col-12 col-lg-3 mt-3">
+            <div class="dash-box bg-secondary p-2 d-flex justify-content-between">
+              <img src="{%static 'images/scho.jpeg'%}" alt="">
+              <div class="p-2">
+                <h5 class="my-auto">Scholorship</h5>
+                <small class="text-danger">You need to verify KYC to apply for Scholorship</small>
+              </div>
+              
+            </div>
+          </div>
+          {% endif %}
+
+       
+
+      <div class="col-12 col-lg-3 mt-3">
+        <a href="{%url 'customer:profile'%}">
+          <div class="dash-box p-2 d-flex justify-content-between">
+            <img src="{%static 'images/user.webp'%}" alt="">
+            <h5 class="my-auto">Profile</h5>
+          </div>
+        </a>
+       
+    </div>
+         
+          
+      <div class="mt-5 col-12 ">
+        <div>
+          <div class="d-flex justify-content-between">
+            <h5 class="m-0  text-primary">Latest Course</h5>
+            
+            </a>
+          
+          </div>
+          
+          {% if not course %}
+            <hr>
+              <p class="text-secondary">
+                   Haven't added any course
+              </p>
+          {% endif %}
+            
+          <table class="table align-middle mb-0 bg-white mt-4">
+            
+            <tbody>
+
+        {% for i in course  %}
+        <tr>
+         
+            <td>
+              <a href="{%url 'landing:courseDetail' i.slug%}">
+              <div class="d-flex align-items-center">
+                
+                {% if i.image %}
+                <img
+                src="{{i.image.url}}"
+                alt=""
+                style="width: 45px; height: 45px"
+                class="rounded-circle"
+                />
+                    {%else%}
+                    <img
+                    src="https://mdbootstrap.com/img/new/avatars/8.jpg"
+                    alt=""
+                    style="width: 45px; height: 45px"
+                    class="rounded-circle"
+                    />
+                {% endif %}
+                    
+                
+                <div class="ms-3">
+                  <p class="fw-bold mb-1">{{i.name}}</p>
+                  <p class="text-muted mb-0">{{i.category}}</p>
+                </div>
+              </div>
+            </a>
+            </td>
+         
+          
+            
+          </tr>
+        {% endfor %}  
+              
+              
+        </tbody>
+        </table>
+        
+            
+        </div>
+        
+        
+      </div>
+    </div>
+
+    
+      {% endblock inside %}
+    </div>
+</div>
+<br><br>
+<br>
+{% endblock content %}
+
+
+{% block footer %}
+  
+{% endblock footer %}
+  
+    

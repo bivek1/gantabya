@@ -1,0 +1,154 @@
+/* Scrollbar Track */
+.side-bar::-webkit-scrollbar-track {
+    background-color: #e7e7e7; /* Adjust the track color */
+  }
+  
+  /* Scrollbar Thumb */
+  .side-bar::-webkit-scrollbar-thumb {
+    background-color: #f0f0f0; /* Adjust the thumb color */
+  }
+  
+  /* Scrollbar Thumb on hover */
+  .side-bar::-webkit-scrollbar-thumb:hover {
+    background-color: #f3f3f3; /* Adjust the thumb color on hover */
+  }
+  
+  /* Scrollbar Width and Height */
+  .side-bar::-webkit-scrollbar {
+    width: 5px; /* Adjust the scrollbar width */
+    height: 5px; /* Adjust the scrollbar height */
+  }
+
+  .side-bar{
+    background-color: white;
+    height: 100vh;
+    margin-left: 14px;
+    width: 18%;
+    position: fixed;
+    bottom: 0;
+    border-radius: 10px;
+    overflow-y: scroll;
+    /* box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px; */
+}
+
+.whole-content{
+    width: 80%;
+   
+    float: right;
+}
+.showphone{
+    display: none;
+}
+.side-item{
+    cursor: pointer;
+    display: flex;
+
+}
+
+.side-item span{
+    font-weight: lighter;
+}
+
+.dashboard-box{
+    width: 100%;
+    padding: 10px;
+    background-color: white;
+    display: flex;
+    border-radius: 5px;
+    justify-content: space-between;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    cursor: pointer;
+}
+.dashboard-box:hover{
+    background-color: rgb(234, 234, 234);
+    box-shadow: rgba(83, 83, 88, 0.2) 0px 7px 29px 0px;
+    transition-delay: .2s;
+}
+.activate{
+  padding: 10px;
+  background-color: #c4e1f6;
+  border-radius: 14px;
+  padding-left: 20px;
+}
+
+.breadcum{
+  padding: 5px;
+  font-weight:300;
+  background-color: rgb(255, 255, 255);
+  color: #110c5e;
+  border-radius: 5px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+
+}
+
+.cat-item{
+  padding: 6px;
+  color: #3466aa;
+  display: flex;
+  cursor: pointer;
+  font-size: 16px;
+  justify-content:flex-start
+  
+
+}
+.cat-item:hover{
+  background-color: #f4f4f4;
+  color: #484848;
+  transition-delay: .1s;
+}
+
+
+.custom-input {
+  display: none; /* Hide the default input element */
+}
+
+.custom-label {
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 6px 10px;
+  background-color: #f8f8f8;
+  color: #555;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.custom-label::before {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  margin-right: 5px;
+  background-color: #ccc;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 50%;
+}
+
+/* Hide the plus icon when an image is selected */
+.custom-label.with-image::before {
+  display: none;
+}
+
+#image-preview {
+  max-width: 50%;
+  max-height: auto;
+}
+
+.alert img{
+  height: 40px;
+  width: 40px;
+}
+.bg-secondary{
+  background-color: #ccc!important;
+}
+
+.transaction-div{
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.transaction-div:hover{
+  background-color: #c4e1f6;
+  border-radius: 20px;
+}

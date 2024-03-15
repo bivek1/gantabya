@@ -67,45 +67,18 @@ class KYC(models.Model):
         ('Female', 'Female'),
         ('Other', 'Other')
     ), null=True, blank = True)
-    document_type = models.CharField(max_length=200, choices=(
-        ('National ID', 'National ID'),
-        ('Driver licence', 'Driver licence'),
-        ('Passport', 'Passport'),
-        
-    ))
+   
     
-
-
-    # Licence
-    licence_number = models.IntegerField(null = True, blank=True)
+    # Document
+    document_number = models.IntegerField(null = True, blank=True)
     issue_date = models.DateField(null=True, blank=True)
     expiry_date = models.DateField(null=True, blank=True)
     document_front_image = models.ImageField(upload_to="document/", null =True, blank = True)
     document_back_image = models.ImageField(upload_to="document/", null =True, blank = True)
     
-
-    # Passport
-    passport_number = models.IntegerField(null = True, blank=True)
-    passport_issue_date = models.DateField(null=True, blank=True)
-    passport_expiry_date = models.DateField(null=True, blank=True)
-    passport_image = models.ImageField(upload_to="document/", null =True, blank = True)
-    passport_issued_country = models.CharField(max_length=200, null =True, blank = True)
-    address_verification = models.ImageField(upload_to='bills', null=True, blank=True)
-    # passport_image = models.ImageField(upload_to="document/", null =True, blank = True)
-
-    # Business Registration 
-    business_image = models.ImageField(upload_to='document/', null =True, blank = True)
-    business_registration_date = models.DateField(null = True, blank=True)
-    registraion_number = models.IntegerField(null = True, blank=True)
-    
-    #photo-id
-    photo_image = models.ImageField(upload_to='photoid/', null =True, blank = True)
-    photo_issue_date = models.DateField(null = True, blank=True)
-    photo_number = models.IntegerField(null = True, blank=True)
-    
-
     created_at = models.DateTimeField(auto_now_add= True)
     updated_at = models.DateTimeField(auto_now=True)
+    seen = models.BooleanField(default = False)
 
 
     def __str__(self):
@@ -176,6 +149,16 @@ class Course(models.Model):
         else:
             self.slug = slugify(self.name)
         super(Course, self).save(*args, **kwargs)
+
+
+class Scholorship(models.Model):
+    customer = models.ForeignKey(Customer, related_name = "customer_scholorship", on_delete = models.CASCADE)
+    course = models.ForeignKey(Course, related_name = "course_scholorship", on_delete = models.CASCADE)
+    remarks = models.CharField(max_length=1000)
+    created_at = models.DateTimeField(auto_now = True)
+
+    def __str__(self):
+        return self.customer.admin.username
 
 
 class Contact(models.Model):
